@@ -6,8 +6,12 @@ function SignIn(payload) {
 function Login(payload) {
     return Axios.post("login",payload);
 }
+function getDataUser() {
+    return Axios.get("user");
+}
 
 export const userServices = {
     SignIn,
-    Login
+    Login,
+    getDataUser
 };

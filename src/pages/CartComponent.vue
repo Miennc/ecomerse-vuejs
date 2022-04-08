@@ -20,7 +20,7 @@ export default {
 
     updateQuantity(itemCartIndex, quantityUnit) {
       if (this.cart[itemCartIndex].quantity + quantityUnit <= 0) {
-        this.removeItemCart(this.carts[itemCartIndex].id);
+        this.cart.splice(itemCartIndex, 1);
       } else {
         this.cart[itemCartIndex].quantity += quantityUnit;
         localStorage.setItem('carts', JSON.stringify(this.cart));

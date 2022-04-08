@@ -29,6 +29,11 @@ export const router = new VueRouter({
             name: 'cart',
             component:()=> import('@/pages/CartComponent')
         },
+          {
+                    path: '/order',
+                    name: 'order',
+                    component:()=> import('@/pages/OrderComponent')
+                },
     ],
     mode:"history"
 })
