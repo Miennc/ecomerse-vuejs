@@ -27,7 +27,7 @@
       >Login
       </button>
       <span class="form-input-login  pt-3">
-      Already have an account?  <a class="mx-2 text-blue-600 cursor-pointer">login</a>here
+      Already have an account?  <a class="mx-2 text-blue-600 cursor-pointer">Signup</a>here
     </span>
 
     </form>
@@ -38,10 +38,9 @@
 import {userServices} from '@/services/userServices.js'
 
 export default {
-  name: "login",
+  name: "Signup",
   data() {
     return {
-      users: [],
       user: {
         email: '',
         password: '',
@@ -78,18 +77,22 @@ export default {
       return true;
     },
     async login(e) {
-     if(this.Validate()){
-       return;
-     }
-      userServices.Login({
-        email: this.user.email,
-        password: this.user.password,
-      }).then(res => {
-        localStorage.setItem('token', res.data.token);
-        this.$router.push('/');
-      }).catch(err => {
-        console.log(err);
-      })
+      const isValid = this.Validate();
+      if (!isValid) {
+        return;
+      }
+      try {
+        const response = await userServices.Login({
+          email: this.user.email,
+          password: this.user.password,
+        })
+        const data = response.data;
+        localStorage.setItem('token', data.token);
+        alert('Login Successfully');
+        this.$router.push({name: 'Home'});
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 }

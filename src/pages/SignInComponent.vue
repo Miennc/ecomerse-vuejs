@@ -162,6 +162,7 @@ export default {
           email: this.user.email,
           password: this.user.password,
         });
+        alert("Sign up successfully.");
         this.$router.push({name: 'login'});
       } catch (e) {
         console.log(e)
