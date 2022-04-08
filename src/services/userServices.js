@@ -1,10 +1,10 @@
 import { Axios } from "./Axios";
 
-function SignIn() {
-    return Axios.post("signup");
+function SignIn(payload) {
+    return Axios.post("signup", payload);
 }
-function Login() {
-    return Axios.post("login");
+function Login(payload) {
+    return Axios.post("login",payload);
 }
 
 export const userServices = {

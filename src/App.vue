@@ -1,8 +1,8 @@
 <template>
   <div class="container mx-auto">
 
-     <MenuComponent></MenuComponent>
-      <router-view></router-view>
+    <MenuComponent></MenuComponent>
+    <router-view></router-view>
     <FooterComponent></FooterComponent>
   </div>
 </template>
@@ -17,7 +17,6 @@ export default {
     FooterComponent
   },
   methods:{
-
   }
 }
 </script>

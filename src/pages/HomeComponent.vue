@@ -11,7 +11,7 @@ export default {
   },
   components: {},
   methods: {
-
+// add to cart lưu vĩnh viễn trong localstorage
     addToCart(ProductId) {
 
       if (this.carts.find(product => product.id == ProductId)) {
@@ -27,8 +27,8 @@ export default {
       }
 
     }
-
   },
+
 
   async mounted() {
     try {

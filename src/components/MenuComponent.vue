@@ -7,8 +7,12 @@
           <ul class="flex items-center gap-4 ">
             <li><a href="" class="font-bold text-lg">Home</a></li>
             <li><a href="" class="font-bold text-lg">Danh Muc</a></li>
-            <li><a href="" class="font-bold text-lg">Đăng ký</a></li>
-            <li><a href="" class="font-bold text-lg">Đăng nhập</a></li>
+             <router-link :to="{name:'SignIn'}">
+               <li><a href="" class="font-bold text-lg">Đăng ký</a></li>
+             </router-link>
+             <router-link :to="{name:'login'} ">
+               <li><a href="" class="font-bold text-lg">Đăng nhập</a></li>
+             </router-link>
           </ul>
         </div>
 
