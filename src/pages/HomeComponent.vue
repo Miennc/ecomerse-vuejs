@@ -11,33 +11,36 @@ export default {
   },
   components: {},
   methods: {
-// add to cart lưu vĩnh viễn trong localstorage
-    addToCart(ProductId) {
+    async getData() {
+      try {
+        const response = await homeService.getLastProducts();
+        this.lastProducts = response.data.lastProducts;
 
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    addToCart(ProductId) {
       if (this.carts.find(product => product.id == ProductId)) {
         alert('sản phẩm đã có trong giỏ hàng')
 
       } else {
-
         this.carts.push(this.lastProducts.find(product => product.id == ProductId))
         this.carts.map((item) => item.quantity = 1)
         localStorage.setItem('carts', JSON.stringify(this.carts))
         alert('thêm sản phẩm vào giỏ hàng thành công')
-
       }
 
+    },
+
+  },
+  mounted() {
+    this.getData();
+    if(localStorage.getItem('carts')){
+      this.carts = JSON.parse(localStorage.getItem('carts'))
     }
   },
 
-
-  async mounted() {
-    try {
-      const response = await homeService.getLastProducts();
-      this.lastProducts = response.data.lastProducts;
-    } catch (error) {
-      console.log(error)
-    }
-  },
 }
 </script>
 
@@ -50,9 +53,9 @@ export default {
     <div class=" grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4 lg:mx-10 mx-5">
       <div class="productItem w-auto h-auto shadow-lg shadow-black-500/50 relative"
            v-for="(lastProductsItem,index) in lastProducts" :key="index">
-         <router-link :to="{name:'ProductDetail',query:{id:lastProductsItem.id}}">
-           <img class="w-full h-72 object-cover" :src="lastProductsItem.image.full_image_path" alt="">
-         </router-link>
+        <router-link :to="{name:'ProductDetail',query:{id:lastProductsItem.id}}">
+          <img class="w-full h-72 object-cover" :src="lastProductsItem.image.full_image_path" alt="">
+        </router-link>
         <div class="mx-3 my-2 ">
           <div class="flex justify-between items-center">
             <h6 class="text-xl font-semibold">{{ lastProductsItem.name }}</h6>
