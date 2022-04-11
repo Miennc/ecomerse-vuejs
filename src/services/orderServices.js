@@ -1,9 +1,9 @@
 import { Axios } from "./Axios";
 
-function listOrder() {
-    return Axios.get("");
+function makeOrder(payload) {
+    return Axios.post("make-order",payload);
 }
 
 export const orderServices = {
-    listOrder
+    makeOrder
 };
