@@ -1,6 +1,15 @@
 <template>
   <!-- component -->
   <div class="bg-white p-8 rounded-md w-full">
+      <select name="" id="" class=" border-2 border-rose-600  rounded-lg w-96 h-12 " v-model="selected">
+        <option disabled value="">Vui lòng chọn một option</option>
+        <option value="1">Pending</option>
+        <option value="2"> processing</option>
+        <option value="3">sent</option>
+        <option value="4">received</option>
+        <option value="5">cancel</option>
+      </select>
+       <span><button @click="onsubmit()" class="bg-amber-500 w-32 ml-2 h-12">lọc</button></span>
     <div>
       <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
         <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -90,23 +99,7 @@
             </tr>
             </tbody>
           </table>
-          <div
-              class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
-						<span class="text-xs xs:text-sm text-gray-900">
-                            Trang {{ data.current_page }} của {{ data.last_page }} trang
-                        </span>
-            <div class="inline-flex mt-2 xs:mt-0">
-              <button
-                  class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
-                Prev
-              </button>
-              &nbsp; &nbsp;
-              <button
-                  class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
-                Next
-              </button>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -121,6 +114,7 @@ export default {
   data() {
     return {
       data: [],
+      selected: '',
 
     }
   },
@@ -132,6 +126,16 @@ export default {
       alert(e.response.data.message);
     }
   },
+  methods:{
+  async onsubmit(){
+     try {
+       const resp = await orderServices.listOrdersByStatus(this.selected);
+       this.data = resp.data
+     } catch (e) {
+       alert(e.response.data.message);
+     }
+   }
+  }
 }
 </script>
 

@@ -15,6 +15,9 @@
              <router-link :to="{name:'login'} ">
                <li><a href="" class="font-bold text-lg">Đăng nhập</a></li>
              </router-link>
+             <router-link :to="{name:'listOrder'} ">
+              <li><a href="" class="font-bold text-lg">my order</a></li>
+            </router-link>
           </ul>
         </div>
 

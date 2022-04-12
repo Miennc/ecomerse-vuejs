@@ -25,10 +25,21 @@ export const router = new VueRouter({
             component:()=> import('@/pages/LoginComponent')
          },
          {
+            path:'/order-details',
+            name:'OrderDetails',
+            component:()=> import('@/pages/OrderDetailsComponent')
+         },
+          {
+                     path:'/category',
+                     name:'category',
+                     component:()=> import('@/pages/CategoryComponent')
+            },
+
+         {
                      path:'/edit-profile',
                      name:'editProfile',
                      component:()=> import('@/pages/EditProfileComponent')
-                  },
+       },
         {
             path: '/cart',
             name: 'cart',
