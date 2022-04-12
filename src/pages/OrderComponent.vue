@@ -37,7 +37,8 @@ export default {
           products: this.newCart
         }
         orderServices.makeOrder(order)
-        alert('Đặt hàng thành công')
+        localStorage.removeItem('carts')
+        this.$router.push({name:'orderSuccess'})
       } catch (error) {
         console.log(error)
         alert('Đặt hàng thất bại')
@@ -170,7 +171,7 @@ export default {
         </div>
         <div
             class="bg-gray-50 dark:bg-gray-800 w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
-          DẶT
+
           <h3 class="text-xl dark:text-white font-semibold leading-5 text-gray-800">Customer</h3>
           <div
               class="flex flex-col md:flex-row xl:flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
@@ -194,7 +195,9 @@ export default {
                   <path d="M3 7L12 13L21 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <p class="cursor-pointer text-sm leading-5 ">{{ users.email }}</p>
+
               </div>
+              <div>Phone: {{users.phone}}</div>
             </div>
             <div class="flex justify-between xl:h-full items-stretch w-full flex-col mt-6 md:mt-0">
               <div
@@ -213,12 +216,14 @@ export default {
                     180 North King Street, Northhampton MA 1060</p>
                 </div>
               </div>
-              <div class="flex w-full justify-center items-center md:justify-start md:items-start">
-                <button
-                    class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">
-                  Edit Details
-                </button>
-              </div>
+              <router-link :to="{name:'editProfile'}">
+                <div class="flex w-full justify-center items-center md:justify-start md:items-start">
+                  <button
+                      class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">
+                    Edit Details
+                  </button>
+                </div>
+              </router-link>
             </div>
           </div>
         </div>

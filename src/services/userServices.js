@@ -9,9 +9,12 @@ function Login(payload) {
 function getDataUser() {
     return Axios.get("user");
 }
-
+function editProfile(payload) {
+    return Axios.put("update-profile",payload);
+}
 export const userServices = {
     SignIn,
     Login,
-    getDataUser
+    getDataUser,
+    editProfile
 };
