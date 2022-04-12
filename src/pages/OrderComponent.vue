@@ -37,8 +37,10 @@ export default {
           products: this.newCart
         }
         orderServices.makeOrder(order)
+        alert('Đặt hàng thành công')
       } catch (error) {
         console.log(error)
+        alert('Đặt hàng thất bại')
       }
     }
   },
