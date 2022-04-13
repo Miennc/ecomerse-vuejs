@@ -23,7 +23,10 @@ export default {
     addToCart(ProductId) {
       if (this.carts.find(product => product.id == ProductId)) {
         alert('sản phẩm đã có trong giỏ hàng')
-
+        this.carts.map((product)=>{
+          product.quantity +=1
+        })
+        localStorage.setItem('carts', JSON.stringify(this.carts))
       } else {
         this.carts.push(this.lastProducts.find(product => product.id == ProductId))
         this.carts.map((item) => item.quantity = 1)
