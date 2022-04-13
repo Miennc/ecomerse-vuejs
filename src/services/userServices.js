@@ -13,7 +13,6 @@ function editProfile(payload) {
     return Axios.put("update-profile",payload);
 }
 function postAvatar(formData) {
-    console.log(formData)
     Axios.setHeaders({ 'Content-Type': 'multipart/form-data' })
     return Axios.post("update-avatar",formData
     ).then((res)=> {

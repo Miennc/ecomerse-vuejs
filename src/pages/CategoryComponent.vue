@@ -7,7 +7,7 @@
 
           <select class="w-96 h-12 border-2 border-rose-600 " v-model="selected">
             <option disabled value="">Vui lòng chọn một option</option>
-            <option v-for="(categoryItem, index) in categories.data" :key="index" :value="categoryItem.id">
+            <option v-for="(categoryItem, index) in categories.data" :key="index" :value="categoryItem.id" >
               {{ categoryItem.name }}
             </option>
           </select>
